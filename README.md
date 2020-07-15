@@ -1,6 +1,6 @@
 # docker-cutycapt
 
-Latest Ubuntu with cutycapt based on repos:
+Latest Debian with cutycapt based on repos:
 
 * https://github.com/marazmiki/docker-flaskycapt
 
