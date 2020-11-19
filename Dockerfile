@@ -8,11 +8,14 @@ ENV LANG en_US.utf8
 RUN apt-get clean && \
     apt-get update -y && \
     apt-get install -y xfonts-75dpi xfonts-100dpi xfonts-cyrillic xfonts-scalable xvfb \
-                       python-pip python-dev build-essential imagemagick cutycapt netcat \
-                       curl net-tools
+                       build-essential imagemagick cutycapt netcat curl net-tools \
+                       python-pip virtualenv python3-virtualenv python-dev python3-dev
 
 RUN pip install --upgrade pip setuptools
 RUN pip install yattag Flask gunicorn requests six pyvirtualdisplay
+RUN virtualenv -p python3 /opt/.venv3
+RUN . /opt/.venv3/bin/activate && pip install --upgrade pip setuptools
+RUN . /opt/.venv3/bin/activate && pip install yattag Flask gunicorn requests six pyvirtualdisplay
 
 WORKDIR /opt/cutycapt
 
